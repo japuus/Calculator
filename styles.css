@@ -1,0 +1,22 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.firstContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    border: 1px red solid;
+    width: 500px;
+    height: 500px
+}
+
+button {
+    width: 50px;
+    height: 50px
+}
