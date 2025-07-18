@@ -2,6 +2,7 @@ let firstValue = "";
 let firstValueConfirmed = "";
 const display = document.querySelector(".display");
 const display2 = document.querySelector(".display2");
+const buttonOperators = document.querySelectorAll(".operator");
 
 let result;
 
@@ -26,32 +27,40 @@ buttonThree.addEventListener("click", () => {
     display.textContent = firstValue;
 })
 
-const buttonOperator = document.querySelector(".operator");
-buttonOperator.addEventListener("click", () => {
+const buttonPlus = document.querySelector(".plus");
+buttonPlus.addEventListener("click", () => {
     if (firstValue === "") {
-        alert("Enter a value before using operator");
-    } else if (firstValueConfirmed !== "") {
-        alert("Addition is already selected, press equal sign or modify your number");
-        console.log("firstValue is " + firstValue);
-        console.log("firstValueConfirmed is " + firstValueConfirmed);
-    }
+        alert("Enter a value before using plus");
+    } 
     else { firstValueConfirmed = firstValue;
     console.log("firstValueConfirmed is " + firstValueConfirmed);
     display2.textContent = firstValue + "+";
-//  firstValue += "+";
     display.textContent = "";
     firstValue = ""; 
+    buttonOperators.forEach(button => button.disabled = true);
     }
 })
+
+const buttonMinus = document.querySelector(".minus");
+buttonMinus.addEventListener("click", () => {
+    if (firstValue === "") {
+        alert("Enter a value before using plus");
+    } else { firstValueConfirmed = firstValue;
+        console.log("firstValueConfirmed is " + firstValueConfirmed);
+        display2.textContent = firstValue + "-";
+        display.textContent = "";
+        firstValue = ""; 
+        buttonOperators.forEach(button => button.disabled = true);
+        }
+}
+)
 
 const buttonEqualize = document.querySelector(".equalize");
 buttonEqualize.addEventListener("click", () => {
     if ((firstValue !== "") && (firstValueConfirmed !== "")) {
-        let firstValueNum = Number(firstValue);
-        let firstValueNConfirmedum = Number(firstValueConfirmed);
-        result = firstValueNum + firstValueNConfirmedum;
-        console.log("result is " + result);
-
+        let result = Number(firstValue) + Number(firstValueConfirmed);
+        alert("Result is " + result)
+        location.reload();
     } else {
         alert("Insufficient info for calculation");
     }
