@@ -1,5 +1,6 @@
 let firstValue = "";
-let firstValueConfirmed = "";
+let addedValueConfirmed = "";
+let subtractedValueConfirmed = "";
 const display = document.querySelector(".display");
 const display2 = document.querySelector(".display2");
 const buttonOperators = document.querySelectorAll(".operator");
@@ -32,8 +33,8 @@ buttonPlus.addEventListener("click", () => {
     if (firstValue === "") {
         alert("Enter a value before using plus");
     } 
-    else { firstValueConfirmed = firstValue;
-    console.log("firstValueConfirmed is " + firstValueConfirmed);
+    else { addedValueConfirmed = firstValue;
+    console.log("addedValueConfirmed is " + addedValueConfirmed);
     display2.textContent = firstValue + "+";
     display.textContent = "";
     firstValue = ""; 
@@ -41,12 +42,13 @@ buttonPlus.addEventListener("click", () => {
     }
 })
 
+// Vähennyslasku
 const buttonMinus = document.querySelector(".minus");
 buttonMinus.addEventListener("click", () => {
     if (firstValue === "") {
         alert("Enter a value before using plus");
-    } else { firstValueConfirmed = firstValue;
-        console.log("firstValueConfirmed is " + firstValueConfirmed);
+    } else {subtractedValueConfirmed = firstValue;
+        console.log("subtractedValueConfirmed is " + subtractedValueConfirmed);
         display2.textContent = firstValue + "-";
         display.textContent = "";
         firstValue = ""; 
@@ -57,11 +59,15 @@ buttonMinus.addEventListener("click", () => {
 
 const buttonEqualize = document.querySelector(".equalize");
 buttonEqualize.addEventListener("click", () => {
-    if ((firstValue !== "") && (firstValueConfirmed !== "")) {
-        let result = Number(firstValue) + Number(firstValueConfirmed);
+    if ((firstValue !== "") && (addedValueConfirmed !== "")) {
+        let result = Number(firstValue) + Number(addedValueConfirmed);
         alert("Result is " + result)
         location.reload();
-    } else {
+    } else if ((firstValue !== "") && (subtractedValueConfirmed !== "")) {
+        let result = Number(subtractedValueConfirmed) - Number(firstValue);
+        alert("Result is " + result)
+        location.reload();
+    }  else {
         alert("Insufficient info for calculation");
     }
 })
