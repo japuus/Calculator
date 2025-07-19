@@ -6,7 +6,6 @@ const display2 = document.querySelector(".display2");
 const display3 = document.querySelector(".display3");
 const buttonOperators = document.querySelectorAll(".operator");
 const buttonAll = document.querySelectorAll(".btn");
-
 let result;
 
 const buttonOne = document.querySelector(".one");
@@ -71,9 +70,12 @@ buttonEqualize.addEventListener("click", () => {
         display.textContent = "";
         display2.textContent += (firstValue + "=" + result);
         buttonAll.forEach(button => button.disabled = true);
-
     }  else {
         alert("Insufficient info for calculation");
     }
-    
+})
+
+const buttonReset = document.querySelector(".reset");
+buttonReset.addEventListener("click", () => {
+    location.reload();
 })
