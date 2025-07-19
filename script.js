@@ -6,8 +6,19 @@ const display2 = document.querySelector(".display2");
 const display3 = document.querySelector(".display3");
 const buttonOperators = document.querySelectorAll(".operator");
 const buttonAll = document.querySelectorAll(".btn");
+const buttonNums = document.querySelectorAll(".num");
 let result;
 
+buttonNums.forEach(button => {
+button.addEventListener("click", () => {
+    const value = button.textContent;
+    firstValue += value;
+    console.log("firstValue is " + firstValue);
+    display.textContent = firstValue;
+  });
+});
+
+/*
 const buttonOne = document.querySelector(".one");
 buttonOne.addEventListener("click", () => {
     firstValue += 1;
@@ -28,6 +39,7 @@ buttonThree.addEventListener("click", () => {
     console.log("firstValue is " + firstValue);
     display.textContent = firstValue;
 })
+    */
 
 const buttonPlus = document.querySelector(".plus");
 buttonPlus.addEventListener("click", () => {
