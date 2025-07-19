@@ -3,7 +3,9 @@ let addedValueConfirmed = "";
 let subtractedValueConfirmed = "";
 const display = document.querySelector(".display");
 const display2 = document.querySelector(".display2");
+const display3 = document.querySelector(".display3");
 const buttonOperators = document.querySelectorAll(".operator");
+const buttonAll = document.querySelectorAll(".btn");
 
 let result;
 
@@ -35,7 +37,7 @@ buttonPlus.addEventListener("click", () => {
     } 
     else { addedValueConfirmed = firstValue;
     console.log("addedValueConfirmed is " + addedValueConfirmed);
-    display2.textContent = firstValue + "+";
+    display2.textContent = addedValueConfirmed + "+";
     display.textContent = "";
     firstValue = ""; 
     buttonOperators.forEach(button => button.disabled = true);
@@ -49,7 +51,7 @@ buttonMinus.addEventListener("click", () => {
         alert("Enter a value before using plus");
     } else {subtractedValueConfirmed = firstValue;
         console.log("subtractedValueConfirmed is " + subtractedValueConfirmed);
-        display2.textContent = firstValue + "-";
+        display2.textContent = subtractedValueConfirmed + "-";
         display.textContent = "";
         firstValue = ""; 
         buttonOperators.forEach(button => button.disabled = true);
@@ -61,13 +63,17 @@ const buttonEqualize = document.querySelector(".equalize");
 buttonEqualize.addEventListener("click", () => {
     if ((firstValue !== "") && (addedValueConfirmed !== "")) {
         let result = Number(firstValue) + Number(addedValueConfirmed);
-        alert("Result is " + result)
-        location.reload();
+        display.textContent = "";
+        display2.textContent += (firstValue + "=" + result)
+        buttonAll.forEach(button => button.disabled = true);
     } else if ((firstValue !== "") && (subtractedValueConfirmed !== "")) {
         let result = Number(subtractedValueConfirmed) - Number(firstValue);
-        alert("Result is " + result)
-        location.reload();
+        display.textContent = "";
+        display2.textContent += (firstValue + "=" + result);
+        buttonAll.forEach(button => button.disabled = true);
+
     }  else {
         alert("Insufficient info for calculation");
     }
+    
 })
