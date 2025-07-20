@@ -1,6 +1,8 @@
 let firstValue = "";
 let addedValueConfirmed = "";
 let subtractedValueConfirmed = "";
+let dividedValueConfirmed = "";
+let multipliedValueConfirmed = "";
 const display = document.querySelector(".display");
 const display2 = document.querySelector(".display2");
 const display3 = document.querySelector(".display3");
@@ -46,7 +48,8 @@ buttonPlus.addEventListener("click", () => {
     if (firstValue === "") {
         alert("Enter a value before using plus");
     } 
-    else { addedValueConfirmed = firstValue;
+    else { 
+        addedValueConfirmed = firstValue;
     console.log("addedValueConfirmed is " + addedValueConfirmed);
     display2.textContent = addedValueConfirmed + "+";
     display.textContent = "";
@@ -60,7 +63,8 @@ const buttonMinus = document.querySelector(".minus");
 buttonMinus.addEventListener("click", () => {
     if (firstValue === "") {
         alert("Enter a value before using plus");
-    } else {subtractedValueConfirmed = firstValue;
+    } else {
+        subtractedValueConfirmed = firstValue;
         console.log("subtractedValueConfirmed is " + subtractedValueConfirmed);
         display2.textContent = subtractedValueConfirmed + "-";
         display.textContent = "";
@@ -69,6 +73,34 @@ buttonMinus.addEventListener("click", () => {
         }
 }
 )
+
+const buttonDivide = document.querySelector(".divide");
+buttonDivide.addEventListener("click", () =>  {
+    if (firstValue === "") {
+        alert("Enter a value before using division");
+    } else {
+        dividedValueConfirmed = firstValue;
+        console.log("dividedValueConfirmed is " + dividedValueConfirmed);
+        display2.textContent = dividedValueConfirmed + "/";
+        display.textContent = "";
+        firstValue = "";
+        buttonOperators.forEach(button => button.disabled = true);
+    }
+})
+
+const buttonMultiply = document.querySelector(".multiply");
+buttonMultiply.addEventListener("click", () => {
+    if (firstValue === "") {
+        alert("Enter a value before using multiplication");
+    } else {
+        multipliedValueConfirmed = firstValue;
+        console.log("multipliedValueConfirmed is " + multipliedValueConfirmed);
+        display2.textContent = multipliedValueConfirmed + "*";
+        display.textContent = "";
+        firstValue = "";
+        buttonOperators.forEach(button => button.disabled = true);
+    }
+})
 
 const buttonEqualize = document.querySelector(".equalize");
 buttonEqualize.addEventListener("click", () => {
@@ -82,7 +114,26 @@ buttonEqualize.addEventListener("click", () => {
         display.textContent = "";
         display2.textContent += (firstValue + "=" + result);
         buttonAll.forEach(button => button.disabled = true);
-    }  else {
+    }  else if ((firstValue !== "") && (dividedValueConfirmed !== "")) {
+        let result = Number(dividedValueConfirmed) / Number(firstValue);
+//      return Number.isInteger(result) ? result : parseFloat(result.toFixed(3));
+        if (Number.isInteger(result)) {
+            display2.textContent += (firstValue + "=" + result);
+        } else {
+            let resultRounded = result.toFixed(3);
+            display2.textContent += (firstValue + "=" + resultRounded);
+        }
+        display.textContent = "";
+//      display2.textContent += (firstValue + "=" + resultRounded);
+        buttonAll.forEach(button => button.disabled = true);
+    }  else if ((firstValue !== "") && (multipliedValueConfirmed !== "")) {
+        let result = Number(multipliedValueConfirmed) * Number(firstValue);
+        let resultRounded = result.toFixed(3);
+        display.textContent = "";
+        display2.textContent += (firstValue + "=" + resultRounded);
+        buttonAll.forEach(button => button.disabled = true);
+    }
+    else {
         alert("Insufficient info for calculation");
     }
 })
