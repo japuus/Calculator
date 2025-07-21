@@ -120,7 +120,7 @@ buttonEqualize.addEventListener("click", () => {
         if (Number.isInteger(result)) {
             display2.textContent += (firstValue + "=" + result);
         } else {
-            let resultRounded = result.toFixed(3);
+            let resultRounded = result.toFixed(4);
             display2.textContent += (firstValue + "=" + resultRounded);
         }
         display.textContent = "";
@@ -128,9 +128,13 @@ buttonEqualize.addEventListener("click", () => {
         buttonAll.forEach(button => button.disabled = true);
     }  else if ((firstValue !== "") && (multipliedValueConfirmed !== "")) {
         let result = Number(multipliedValueConfirmed) * Number(firstValue);
-        let resultRounded = result.toFixed(3);
+        if (Number.isInteger(result)) {
+            display2.textContent += (firstValue + "=" + result);
+        } else {
+            let resultRounded = result.toFixed(4);
+            display2.textContent += (firstValue + "=" + resultRounded);
+        }
         display.textContent = "";
-        display2.textContent += (firstValue + "=" + resultRounded);
         buttonAll.forEach(button => button.disabled = true);
     }
     else {
