@@ -11,35 +11,25 @@ body {
 
 .btn {
     margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
 }
 
-.display {
-    color:darkgray;
+.display1 {
+    color:rgb(73, 71, 71);
     height: 18px;
     border: 1px solid red;
 }
 
 
 .display2 {
-    
     height: 18px;
     border: 1px solid red;
 }
 
-/*
-.firstContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 150px;
-    border: 1px red solid;
-    width: 500px;
-    height: 500px
-}
 
-button {
-    width: 50px;
-    height: 50px
+.backspace,
+.reset {
+    width: 35px;
+    height: 35px
 }
-
-*/
